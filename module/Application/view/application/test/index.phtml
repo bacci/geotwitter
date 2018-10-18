@@ -1,0 +1,63 @@
+<div class="jumbotron">
+    <h1>Twitter Geo Localização</span></h1>
+
+    <p>
+       Digite um usuário do twitter
+    </p>
+    <form method="POST">
+        <p><input type="text" name="account" value="<?php echo isset($_POST['account']) ? $_POST['account'] : '';?>" /></p>
+        <button class="btn btn-primary pull-left" onclick="submit(this.form)">Pesquisar &raquo;</a>
+    </form>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Resultado</h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    <?php
+                    if($this->result) {
+                        echo "<img src='".$this->result->profile_image_url_https."' />";
+                        echo "<br />";
+                        echo "Nome: ".$this->result->name;
+                        echo "<br />";
+                        echo "Localização: ".$this->result->location;
+                    } elseif(isset($_POST["account"])) {
+                        echo "Nenhum resultado encontrado.";
+                    } else {
+                        echo "Digite um usuário do twitter na caixa de texto.";
+                    }
+                    ?>
+                </p>
+
+                <p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Mapa</h3>
+            </div>
+            <div class="panel-body">
+                <?php
+                    if($this->result) {
+                        https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=37.795917,-122.39966&amp;q=Washington%2C%20DC+(Twitter%20Geo%20Location)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed
+                        ?><div style="width: 100%"><iframe width="100%" height="600" src="<?php echo $this->location_url; ?>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
+                    <?php
+                    } elseif(isset($_POST["account"])) {
+                        echo "Nenhum resultado encontrado.";
+                    } else {
+                        echo "Digite um usuário do twitter na caixa de texto.";
+                    }
+                ?>
+                
+            </div>
+        </div>
+    </div>
+</div>

@@ -24,6 +24,16 @@ return [
                     ],
                 ],
             ],
+            'test' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route'    => '/test',
+                    'defaults' => [
+                        'controller' => Controller\TestController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
             'application' => [
                 'type'    => Segment::class,
                 'options' => [
@@ -39,6 +49,7 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
+            Controller\TestController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
