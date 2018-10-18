@@ -38,10 +38,10 @@ class TestController extends AbstractActionController
 
 	    		if($geo["lat"] && $geo["long"]) {
 		    		$url = "https://maps.google.com/maps?ll=".$geo["lat"].",".$geo["long"]."&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed";
-		    		echo $url;
 			    } else {
-		    		$url = "https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=".$result->location."+(Twitter%20Geo%20Location)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed";
+		    		$url = "https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=".urlencode($result->location)."&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed";
 		    	}
+		    	
 	    	}
 	    }
 
